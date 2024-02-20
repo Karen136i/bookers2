@@ -1,31 +1,39 @@
 class BooksController < ApplicationController
-  def new
-      @book = Book.new
-  end
   
-  def create
+  
+  def create #投稿の保存画面
     @book = Book.new(book_params)
-    if current_user
-      @book.user_id = current_user.id
-    end
-    @book.save
+    @book.user_id = current_user.id
+
+    @book.save!
     redirect_to books_path
   end
 
-  def index
+  def index #投稿の一覧画面
     @books = Book.all
+    @users = User.all
   end
 
-  def show
+  def show #投稿ごとの詳細ページ
+    @book = Book.find(params[:id])
   end
 
-  def edit
+  def edit #編集画面
+   if params[:id] != "new"
+    @book = Book.find(params[:id])
+   end
+  end
+  
+  def destroy #削除機能の追加
+    book = Book.find(params[:id])
+    book.destroy
+    redirect_to '/books'
   end
   
   private
   
   def book_params
-    params.require(:book).permit(:title, :body)
+    params.require(:book).permit(:title, :body, :image)
   end
   
 end

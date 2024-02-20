@@ -1,10 +1,54 @@
-<h1>Books detail/h1>
+<!--投稿一覧画面の左側の上　　実装された-->
+<h1>User info</h1>
+
+<% @users.each do |user| %>
+
+  <div>
+    <%= image_tag user.get_profile_image %>
+
+    <p>name: <%= user.name %></p>
+
+    <p>introduction: <%= user.introduction %></p>
+
+  </div>
+<% end %>
+
+
+
+<!--投稿一覧画面の左側の下　　実装されてる-->
+
+<h1>New book</h1>
+<!-- form_with部分 -->
+<%= form_with model: Book.new do |f| %>
+
+  <h4>Title</h4>
+  <%= f.text_field :title %>
+
+  <h4>Opinion</h4>
+  <%= f.text_area :body %>
+
+  <%= f.submit 'Create Book' %>
+<% end %>
+
+
+<!--投稿一覧画面　右側-->
+<h1>Books</h1>
+
+<% @users.each do |user| %>
+  <div>
+     <%= image_tag user.get_profile_image %>
+  </div>
+  
+<% end %>
 
 <% @books.each do |book| %>
-  <div>
-    <%= image_tag book.get_image %>
-    <p>User info：<%= image_tag 'no_image.jpg' %></p>
-    <p>name：<%= post_image.name %></p>
-    <p>introduction：<%= post_image.introduction %></p>
-  </div>
+
+<h3>Title</h3>
+<span>
+  <%= link_to book.title, book_path(book.id) %>
+</span>
+
+<h3>Opinion</h3>
+<span><%= book.body %></span>
+
 <% end %>

@@ -1,2 +1,15 @@
-<h1>Books#show</h1>
-<p>Find me in app/views/books/show.html.erb</p>
+<!--Books/Show（1..122）ページ-->
+<h1>Book detail</h1>
+
+<div>
+  <%= image_tag @book.get_image %>
+  
+  <p>タイトル：<%= @book.title %></p>
+  
+  <p>説明：<%= @book. opinion%></p>
+  
+  <p>投稿ユーザー画像：<%= image_tag 'no_image.jpg' %></p>
+  
+  <p>ユーザーネーム：<%= @book.user.name %></p>
+ 
+</div>
