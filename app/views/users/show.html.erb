@@ -1,25 +1,21 @@
-<!--投稿一覧画面の左側-->
-<h1>User info</h1>　
+<!--Users show-->
+<h1>User info</h1>
 
-<% @books.each do |book| %>
+<% @users.each do |user| %>
 
   <div>
-    <% if @book.image.attached? %>
-        <%= image_tag @book.image, size: "100x100" %>
-    <% else %>
-        <%= image_tag 'no_image.jpg', size: "100x100" %>
-    <% end %>
-  
-    <p>name：<%= user.name %></p>
-    
-    <p>introduction：<%= user.introduction %></p>
-    
+    <%= image_tag user.get_profile_image %>
+
+    <p>name: <%= user.name %></p>
+
+    <p>introduction: <%= user.introduction %></p>
+
   </div>
 <% end %>
 
 
 
-<!--投稿一覧画面の右側-->
+<!--投稿一覧画面の左側の下　　実装されてる-->
 
 <h1>New book</h1>
 <!-- form_with部分 -->
@@ -34,3 +30,32 @@
   <%= f.submit 'Create Book' %>
 <% end %>
 
+
+<!--投稿一覧画面　右側  ここからスタート-->
+<h1>Books</h1>
+<!--投稿ユーザー画像-->
+<% @users.each do |user| %>
+
+  <div>
+     <%= image_tag user.get_profile_image %>
+  </div>
+
+<% end %>
+
+<table>
+<% @books.each do |book| %>
+ <tr>
+  <td>
+    <h3>Title</h3>
+    <span>
+      <%= link_to book.title, book_path(book.id) %>
+    </span>
+  </td>
+  <td>
+    <h3>Opinion</h3>
+    <span><%= book.body %></span>
+  </td>
+ </tr>
+ <% end %>
+
+</table>

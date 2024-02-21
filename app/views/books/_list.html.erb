@@ -1,0 +1,32 @@
+<!--Books/Show（1..122）ページ-->
+
+<h1>User info</h1>
+
+<% @users.each do |user| %>
+
+  <div>
+    <%= image_tag user.get_profile_image(100, 100) %>
+
+    <p>name: <%= user.name %></p>
+
+    <p>introduction: <%= user.introduction %></p>
+
+  </div>
+<% end %>
+
+
+
+<!--投稿一覧画面の左側の下 実装されてる-->
+
+<h1>New book</h1>
+<!-- form_with部分 -->
+<%= form_with model: Book.new do |f| %>
+
+  <h4>Title</h4>
+  <%= f.text_field :title %>
+
+  <h4>Opinion</h4>
+  <%= f.text_area :body %>
+
+  <%= f.submit 'Create Book' %>
+<% end %>
