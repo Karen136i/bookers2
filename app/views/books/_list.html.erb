@@ -1,32 +1,43 @@
 <!--Books/Show（1..122）ページ-->
+       <h2>User info</h2>
+       <table class='table'>
+           <tr>
+             <%= image_tag user.get_profile_image(100, 100) %>
+          </tr>
 
-<h1>User info</h1>
+         <tr>
+           <th>
+             <p>name <%= user.name %></p>
+           </th>
+         </tr>
 
-<% @users.each do |user| %>
+         <tr>
+           <th>
+              <p>introduction <%= user.introduction %></p>
+           </th>
+         </tr>
 
-  <div>
-    <%= image_tag user.get_profile_image(100, 100) %>
+       </table>
 
-    <p>name: <%= user.name %></p>
-
-    <p>introduction: <%= user.introduction %></p>
-
-  </div>
-<% end %>
-
+       <div class="row">
+         <a class="btn btn-outline-secondary btn-block" <%= link_to edit_user_path(user), class: "nav-link text-light" do %>
+         <i class="fa-solid fa-user-gear"></i>
+         <% end %>
+        </a>
+       </div>
 
 
 <!--投稿一覧画面の左側の下 実装されてる-->
 
-<h1>New book</h1>
+<h2>New book</h2>
 <!-- form_with部分 -->
 <%= form_with model: Book.new do |f| %>
 
-  <h4>Title</h4>
+  <h6>Title</h6>
   <%= f.text_field :title %>
 
-  <h4>Opinion</h4>
+  <h6>Opinion</h6>
   <%= f.text_area :body %>
 
-  <%= f.submit 'Create Book' %>
+  <input type="submit" name="commit" value="Create Book" class="btn btn-success" data-disable-with="Create Book">
 <% end %>

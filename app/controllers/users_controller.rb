@@ -1,17 +1,42 @@
 class UsersController < ApplicationController
-  
+
   def show
     @user = User.find(params[:id])
-  
-    
-  end 
-  
-  def index
+    @books = @user.books
     @users = User.all
-  end 
-  
-  
+    #特定のユーザ（@user）に関連付けられた投稿全て（.post_images）を取得し,
+    # @post_imagesに渡す という処理を行うことで、個人の投稿したものをすべて表示させる
+  end
+
+  def index
+    @users = User.all #インスタンス変数
+    @user = current_user
+  end
+
+
   def edit
+  @user = User.find(params[:id])
+  end
+  
+  
+  def update
+    @user = User.find(params[:id])
+    @user.update(user_params)
+    redirect_to user_path(@user.id)
+  end
+
+  
+  private
+  
+  def user_params
+    params.require(:user).permit(:name, :profile_image)
+  end
+  
+  def is_matching_login_user
+    user = User.find(params[:id])
+    unless user.id == current_user.id #現在ログインしている人の情報　
+      redirect_to post_images_path
+    end
   end
   
 end

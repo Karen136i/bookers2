@@ -4,13 +4,15 @@ class BooksController < ApplicationController
   def create #投稿の保存画面
     @book = Book.new(book_params)
     @book.user_id = current_user.id
-    @book.save
+    if @book.save
     redirect_to book_path(@book)
+    flash[:notice] = ""
   end
 
   def index #投稿の一覧画面
     @books = Book.all
     @users = @books
+    @user = current_user
   end
 
   def show #投稿ごとの詳細ページ

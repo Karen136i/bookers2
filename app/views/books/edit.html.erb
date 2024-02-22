@@ -1,20 +1,34 @@
 <!--本の投稿を編集する画面-->
-<h1>Editing Book</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <h1>Editing Book</h1>
 
+      <tbody>
+        <%= form_with model: @book do |f| %>
 
-<%= form_with model: @book do |f| %>
+        <tr>
+          <th><h4>Title</h4></th>
+          <td><%= f.text_field :title, size: 50 %></td>
 
-  <h4>Title</h4>
-  <%= f.text_field :title %>
+          <th><h4>Opinion</h4></th>
+          <td><%= f.text_area :body, size: 50 %></td>
 
-  <h4>Opinion</h4>
-  <%= f.text_area :body %>
+         <div class="form-group">
+            <input type="submit" name="commit" value="Update Book" class="btn btn-success" data-disable-with="Update Book">
+         </div>
 
-  <%= f.submit 'Update Book' %>
-<% end %>
+         <td>
+           <%= link_to "Show", book_path(@book.id) %> &vert; <!--showを押すとshowページに-->
+         </td>
 
-<%= link_to "Show", book_path(@book.id) %>
-<!--showを押すとshowページに-->
+         <td>
+           <%= link_to "Back", books_path %> <!--Backするとindexページに戻る-->
+         </td>
+　　　　</tr>
+　　　 <% end %>
 
-<%= link_to "Back", books_path %> 
-<!--Backするとindexページに戻る-->
+     </tbody>
+    </div>
+  </div>
+</div>

@@ -1,1 +1,33 @@
-<h1>User info</h1>info
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <h1>User info</h1>
+
+       <tbody>
+          <%= form_with model: @user do |f| %>
+
+           <tr>
+             <th><h6>Name</h6></th>
+             <td><%= f.text_field :name %></td>
+             
+             <th><h6>image</h6></th>
+             <td><%= f.file_field :image, accept: "image/*" %></td>
+
+              <th><h6>introduction</h6></th>
+              <td><%= f.text_area :introduction %></td>
+
+            <div class="form-group">
+              <input type="submit" name="commit" value="Update User" class="btn btn-success" data-disable-with="Update User">
+            </div>
+           </tr>
+           <% end %>
+           
+        </tbody>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
