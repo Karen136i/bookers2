@@ -4,14 +4,27 @@
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
       <h1>Editing Book</h1>
 
+      <% if flash[:notice].present? %>
+      <div class="alert alert-success">
+        <%= flash[:notice] %>
+      </div>
+      <% end %>
+
+      <% if flash[:error].present? %>
+        <% flash[:error].each do |error| %>
+        <%= error %><br>
+      <% end %>
+      </div>
+      <% end %>
+
       <tbody>
         <%= form_with model: @book do |f| %>
 
         <tr>
-          <th><h4>Title</h4></th>
+          <th><h5>Title</h5></th>
           <td><%= f.text_field :title, size: 50 %></td>
 
-          <th><h4>Opinion</h4></th>
+          <th><h5>Opinion</h5></th>
           <td><%= f.text_area :body, size: 50 %></td>
 
          <div class="form-group">

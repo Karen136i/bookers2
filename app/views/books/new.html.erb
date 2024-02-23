@@ -1,16 +1,16 @@
-<h1>Books</h1>　
+<h1>Books</h1>
 
 <% @books.each do |book| %>
 
   <div>
     <%= image_tag book.get_image %>
-    
+
     <p>User info：<%= image_tag 'no_image.jpg' %></p>
-    
+
     <p>name：<%= post_image.name %></p>
-    
+
     <p>introduction：<%= post_image.introduction %></p>
-    
+
   </div>
 <% end %>
 

@@ -33,7 +33,7 @@
                 <!--ログイン済みページのヘッダー-->
                 <% if user_signed_in? %>
 
-                  <%= link_to root_path, class: "nav-link text-light" do %>
+                  <%= link_to user_path(current_user), class: "nav-link text-light" do %>
                   <i class="fas fa-house"></i> Home
                   <% end %>
 
@@ -75,8 +75,8 @@
               </ul>
         </header>
      <main>
+      <!--フラッシュメッセージ-->
       <p id="notice"></p>
-      <!--フラッシュメッセージの記述をいれてもよし-->
       <div class="container">
        <div class="row">
         <%= yield %>

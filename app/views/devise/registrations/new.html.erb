@@ -1,5 +1,9 @@
 <!--サインアップ（新規登録）-->
-<h2>Sign up</h2>
+<div class="container">
+  <div class="col-sm-12 col-md-8 col-lg-5 px-sm-0">
+    <h2>Sign up</h2>
+
+    <form id="new_user" class="new_user" action="/users" accept-charset="UTF-8" method="post">
 
   <%= form_with model: @user, url: user_registration_path do |f| %>
 
@@ -9,7 +13,6 @@
   <%= f.label :name %><br>
   <%= f.text_field :name %>
   </div>
-
 
   <div class="field">
     <%= f.label :email %><br />
@@ -30,7 +33,7 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "Sign up", class: "btn btn-success" %>
   </div>
 <% end %>
 

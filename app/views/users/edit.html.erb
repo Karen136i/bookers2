@@ -1,7 +1,20 @@
 <div class="container">
-  <div class="row">
+ <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      
+      
       <h1>User info</h1>
+      
+      <% if @user.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+        <ul>
+          <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+      <% end %>
 
        <tbody>
           <%= form_with model: @user do |f| %>
@@ -9,7 +22,7 @@
            <tr>
              <th><h6>Name</h6></th>
              <td><%= f.text_field :name %></td>
-             
+
              <th><h6>image</h6></th>
              <td><%= f.file_field :image, accept: "image/*" %></td>
 
@@ -21,7 +34,7 @@
             </div>
            </tr>
            <% end %>
-           
+
         </tbody>
       </div>
     </div>
