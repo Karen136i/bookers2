@@ -3,15 +3,12 @@
 <div class="container px-5 px-sm-0">
   <div class="row"> <!--横並び-->
     <div class="col-md-3">
-      <div>
-        <%= flash[:notice] %>
-      </div>
       <%= render 'books/list', user: @user %>
     </div>
 
 
 
-<!--詳細ページの右側　ここからスタート-->
+<!--詳細ページの右側 ここからスタート-->
     <div class="col-md-8 offset-md-1">
     <h1>Book detail</h1>
 
@@ -33,11 +30,15 @@
          </td>
 
          <td>
-           <%= link_to "Edit", edit_book_path(@book.id),class:"btn btn-success" %>
+           <% if @book.user == current_user %>
+             <%= link_to "Edit", edit_book_path(@book.id),class:"btn btn-success" %>
+           <% end %>
          </td>
 
          <td>
+           <% if @book.user == current_user %>
             <%= link_to "Destroy", book_path(@book.id), method: :delete, data: { confirm: "本当に消しますか？" }, class: "btn btn-danger" %>
+           <% end %>
          </td>
 
        </tr>

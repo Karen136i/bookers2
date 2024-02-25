@@ -9,8 +9,9 @@ class User < ApplicationRecord
   
   has_one_attached :profile_image
   
-  validates :name, length: { minimum: 2, message: "Name is too short (minimum is 2 characters)" }
-  
+  validates :name, length: { minimum: 2, message: "Name is too short (minimum is 2 characters)" }, uniqueness: true
+  validates :name, length: { maximum: 20, messeage: "Name is too long (maximum is 20 characters)" }, uniqueness: true
+  validates :introduction, length: { maximum: 50, messeage: "Introduction is too long (maximum is 50 characters)" }
  
   
   def get_profile_image(width, height)

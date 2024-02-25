@@ -1,13 +1,16 @@
 <div class="container">
  <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-      
-      
+
+
       <h1>User info</h1>
-      
+
+      <div>
+        <%= flash[:notice] %>
+　　　</div>
+
       <% if @user.errors.any? %>
       <div id="error_explanation">
-        <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
         <ul>
           <% @user.errors.full_messages.each do |message| %>
             <li><%= message %></li>
@@ -24,13 +27,13 @@
              <td><%= f.text_field :name %></td>
 
              <th><h6>image</h6></th>
-             <td><%= f.file_field :image, accept: "image/*" %></td>
+             <td><%= f.file_field :profile_image, accept: "image/*" %></td>
 
               <th><h6>introduction</h6></th>
               <td><%= f.text_area :introduction %></td>
 
             <div class="form-group">
-              <input type="submit" name="commit" value="Update User" class="btn btn-success" data-disable-with="Update User">
+              <input type="submit" name="commit" value="Update User" class="btn btn-secondary" data-disable-with="Update User">
             </div>
            </tr>
            <% end %>
@@ -39,8 +42,3 @@
       </div>
     </div>
   </div>
-
-
-
-
-

@@ -34,7 +34,7 @@
                 <% if user_signed_in? %>
 
                   <%= link_to user_path(current_user), class: "nav-link text-light" do %>
-                  <i class="fas fa-house"></i> Home
+                  <i class="fa-solid fa-house"></i> Home
                   <% end %>
 
                   <%= link_to users_path, class: "nav-link text-light" do %>
@@ -42,7 +42,7 @@
                   <% end %>
 
                    <%= link_to books_path, class: "nav-link text-light" do %>
-                   <i class="fa-solid fa-book-open"></i> Book
+                   <i class="fa-solid fa-book-open"></i> Books
                    <% end %>
 
                    <%= link_to destroy_user_session_path, method: :delete, class: "nav-link text-light" do %>
@@ -55,7 +55,7 @@
                 <!--ログイン前ページのヘッダー-->
 
                    <%= link_to root_path, class: "nav-link text-light" do %>
-                   <i class="fas fa-house"></i> Home
+                   <i class="fa-solid fa-house"></i> Home
                    <% end %>
 
                    <%= link_to about_path, class: "nav-link text-light" do %>
@@ -75,8 +75,7 @@
               </ul>
         </header>
      <main>
-      <!--フラッシュメッセージ-->
-      <p id="notice"></p>
+      <p id="notice"><%= notice %></p> <!--フラッシュメッセージ-->
       <div class="container">
        <div class="row">
         <%= yield %>
@@ -94,6 +93,6 @@
        </div>
       </div>
      </div>
-　 </footer>
+   </footer>
   </body>
 </html>

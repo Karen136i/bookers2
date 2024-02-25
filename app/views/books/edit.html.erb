@@ -1,21 +1,15 @@
 <!--本の投稿を編集する画面-->
-<div class="container">
-  <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
       <h1>Editing Book</h1>
-
-      <% if flash[:notice].present? %>
-      <div class="alert alert-success">
-        <%= flash[:notice] %>
-      </div>
-      <% end %>
-
+      <div id="error_explanation">
       <% if flash[:error].present? %>
+      <h3><%= @book.errors.count %> errors prohibited this obj from being saved:</h3>
         <% flash[:error].each do |error| %>
         <%= error %><br>
       <% end %>
-      </div>
+
       <% end %>
+      </div>
 
       <tbody>
         <%= form_with model: @book do |f| %>
@@ -38,8 +32,9 @@
          <td>
            <%= link_to "Back", books_path %> <!--Backするとindexページに戻る-->
          </td>
-　　　　</tr>
-　　　 <% end %>
+        </tr>
+       <% end %>
+
 
      </tbody>
     </div>
