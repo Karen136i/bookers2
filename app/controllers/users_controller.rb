@@ -5,8 +5,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @books = @user.books
     @users = User.all
-    #特定のユーザ（@user）に関連付けられた投稿全て（.post_images）を取得し,
-    # @post_imagesに渡す という処理を行うことで、個人の投稿したものをすべて表示させる
+    #特定のユーザ（@user）に関連付けられた投稿全て（.books）を取得し,
+    # @bookに渡す という処理を行うことで、個人の投稿したものをすべて表示させる
   end
 
   def index
